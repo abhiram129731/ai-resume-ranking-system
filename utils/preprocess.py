@@ -1,7 +1,13 @@
 import re
+import nltk
 from nltk.corpus import stopwords
 
-stop_words = set(stopwords.words('english'))
+# 🔥 Download only if not already present
+try:
+    stop_words = set(stopwords.words('english'))
+except LookupError:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('english'))
 
 def clean_text(text):
     text = text.lower()
